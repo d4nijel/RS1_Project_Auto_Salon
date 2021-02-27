@@ -1,0 +1,60 @@
+﻿@model DostaveIndexVM
+@{
+    ViewData["Title"] = "Dostave";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>Pregled dostave</b>
+    </div>
+    <div class="panel-body">
+        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <br />
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline collapsed" id="dataTables-example" role="grid" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Dostavljačka firma</th>
+                                <th>Datum dostave</th>
+                                <th>Brza dostava</th>
+                                <th>Cijena (KM)</th>
+                                <th>Krajnji rok dostave</th>
+                                @if (Model.StatusFaktureId == 3)
+                                {
+                                    <th>Akcija</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @if (Model.DostavaId == 0)
+                                {
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                }
+                                else
+                                {
+
+                                    <td>@Model.DostavljackaFirma</td>
+                                    <td>@Model.DatumDostave.ToShortDateString()</td>
+                                    <td>@(Model.BrzaDostava ? "DA" : "NE")</td>
+                                    <td>@Model.Cijena.ToString("F2")</td>
+                                    <td>@Model.KrajnjiDatumDostave.ToShortDateString()</td>
+                                    @if (Model.StatusFaktureId == 3)
+                                    {
+                                        <td>
+                                            <a asp-action="Detalji" asp-route-DostavaId="@Model.DostavaId" asp-route-FakturaId="@Model.FakturaId" ajax-poziv="da" ajax-rezultat="FaktureDetaljiNekiId" class="btn btn-info">Detalji</a>
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

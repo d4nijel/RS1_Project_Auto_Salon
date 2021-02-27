@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <UserSecretsId>ff59527a-5848-4387-8aca-f62cea9736ac</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoSalon.Data\AutoSalon.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\car.png" />
+    <None Include="wwwroot\images\osiguranje.png" />
+    <None Include="wwwroot\images\rentacar.png" />
+    <None Include="wwwroot\images\report.png" />
+    <None Include="wwwroot\images\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Prodaja\Controllers\" />
+    <Folder Include="Areas\Prodaja\Helper\" />
+    <Folder Include="Areas\Prodaja\ViewModels\" />
+    <Folder Include="Areas\Prodaja\Views\" />
+  </ItemGroup>
+
+</Project>

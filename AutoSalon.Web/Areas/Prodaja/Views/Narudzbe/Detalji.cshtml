@@ -1,0 +1,105 @@
+﻿@model NarudzbeDetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+        $.get("/Prodaja/NarudzbeStavke/Index?id=@Model.BrojNarudzbe",
+            function (rezultat, state) {
+                $("#nekiId").html(rezultat);
+            });
+        });
+        $("#PrintDiv").click(function () {
+            window.print();
+        });
+    </script>
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>Detalji narudžbe</b>
+    </div>
+    <div class="panel-body">
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-4">
+                <div class="form-group">
+                    <label>Broj narudžbe: </label>
+                    <input asp-for="BrojNarudzbe" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-4">
+                <div class="form-group">
+                    <label>Datum narudžbe: </label>
+                    <input asp-for="DatumNarudzbe" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-4">
+                <div class="form-group">
+                    <label>Ime i prezime klijenta: </label>
+                    <input asp-for="KlijentImePrezime" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+        </div>
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-4">
+                <div class="form-group">
+                    <label>Status narudžbe: </label>
+                    <input asp-for="Status" class="form-control" readonly />
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+        </div>
+        <br />
+        @if (Model.StatusNarudzbeId == 1)
+        {
+            <div style="float:right;">
+                <a asp-action="NazadIndex" style="float:left; margin-right:10px" class="btn btn-info">Nazad</a>
+                <a asp-action="Otkazi" asp-route-id="@Model.BrojNarudzbe" style="margin-right:10px" class="btn btn-danger">Otkaži narudžbu</a>
+                <a asp-action="Dodaj" asp-controller="Fakture" asp-route-id="@Model.BrojNarudzbe" style="float:right;" class="btn btn-success">Kreiraj fakturu</a>
+            </div>
+        }
+        else if (Model.StatusNarudzbeId == 4)
+        {
+            <div style="float:right">
+                @*@if (!Model.Provjera)
+                {
+                    <a asp-action="NazadIndex" style="float:left; margin-right:10px" class="btn btn-info">Nazad</a>
+                }
+                else*@
+                @*{*@
+                    <a asp-action="NazadIndex" style="float:left; margin-right:10px" class="btn btn-info">Nazad</a>
+                    <a asp-action="Otkazi" asp-route-id="@Model.BrojNarudzbe" style="margin-right:10px" class="btn btn-danger">Otkaži narudžbu</a>
+                    <a asp-action="Kreiraj" asp-route-id="@Model.BrojNarudzbe" style="float:right;" class="btn btn-warning">Finaliziraj narudžbu</a>
+                @*}*@
+            </div>
+        }
+        else if (Model.StatusNarudzbeId == 2 || (Model.StatusNarudzbeId == 3))
+        {
+            <div id="button-container" class="hidden-print" style="float:right">
+                <a href="#" id="PrintDiv" class="btn btn-success btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>Print</a>
+                <a asp-action="NazadIndex" class="btn btn-info">Nazad</a>
+            </div>
+        }
+    </div>
+</div>
+<div id="nekiId"></div>

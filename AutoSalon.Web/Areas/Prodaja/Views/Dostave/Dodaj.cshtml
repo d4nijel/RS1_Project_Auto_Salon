@@ -1,0 +1,85 @@
+﻿@model DostaveDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+<form asp-action="Snimi" ajax-poziv="da" ajax-rezultat="FaktureDetaljiNekiId">
+    <input asp-for="FakturaId" hidden />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Dodavanje dostave</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Dostavljačka firma:</label>
+                        <p style="color:red; display:inline">*</p>
+                        <select asp-for="DostavljackaFirmaId" asp-items="@Model.DostavljackeFirme" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Datum dostave:</label>
+                        <p style="color:red; display:inline">*</p>
+                        <input type="date" asp-for="DatumDostave" class="form-control" />
+                        <span asp-validation-for="DatumDostave" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-check">
+                        <label>Brza dostava:</label>
+                        <input type="checkbox" asp-for="BrzaDostava" class="form-check-input" />
+                    </div>
+                    <br />
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Cijena:</label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Cijena" class="form-control" />
+                        <span asp-validation-for="Cijena" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Krajnji datum dostave:</label>
+                        <p style="color:red; display:inline">*</p>
+                        <input type="date" asp-for="KrajnjiDatumDostave" class="form-control" />
+                        <span asp-validation-for="KrajnjiDatumDostave" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <p style="color:red; display:inline">*Obavezno polje</p>
+            <button type="submit" style="float:right; width:20%" class="btn btn-primary">Dodaj</button>
+        </div>
+    </div>
+</form>

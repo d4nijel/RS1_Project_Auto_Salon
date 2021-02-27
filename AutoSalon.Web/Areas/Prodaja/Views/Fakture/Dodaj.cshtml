@@ -1,0 +1,56 @@
+﻿@model FaktureDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+<form asp-action="Snimi">
+    <input asp-for="ZaposlenikId" hidden />
+    <input asp-for="DatumFakturisanja" hidden />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Dodavanje fakture</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Broj narudžbe: </label>
+                        <input asp-for="NarudzbaId" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Datum izrade fakture: </label>
+                        <input asp-for="Datum" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Tip popusta: </label>
+                        <select asp-for="PopustId" asp-items="@Model.Popusti" class="form-control">
+                            <option>Odaberite popust</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <button type="submit" style="float:right; width:20%" class="btn btn-primary">Dodaj</button>
+        </div>
+    </div>
+</form>

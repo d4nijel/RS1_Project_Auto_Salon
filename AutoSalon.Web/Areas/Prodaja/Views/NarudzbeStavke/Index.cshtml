@@ -1,0 +1,57 @@
+﻿@model NarudzbeStavkeIndexVM
+@{
+    ViewData["Title"] = "Stavke narudžbe";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>Pregled stavki narudžbe</b>
+    </div>
+    <div class="panel-body">
+        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <br />
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline collapsed" id="dataTables-example" role="grid" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Model vozila</th>
+                                <th>Cijena (KM)</th>
+                                <th>Količina</th>
+                                <th>Ukupna cijena (KM)</th>
+                                <th>Ukupna cijena sa PDV (KM)</th>
+                                @if (Model.StatusNarudzbeId == 4)
+                                {
+                                    <th>Akcija</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.Redovi)
+                            {
+                                <tr>
+                                    <td>@x.ModelVozila</td>
+                                    <td>@x.Cijena.ToString("F2")</td>
+                                    <td>@x.Kolicina</td>
+                                    <td>@x.UkupnaCijena.ToString("F2")</td>
+                                    <td>@x.UkupnaCijenaSaPDV.ToString("F2")</td>
+                                    @if (Model.StatusNarudzbeId == 4)
+                                    {
+                                        <td>
+                                            <a asp-action="Uredi" asp-route-VoziloId="@x.VoziloId" asp-route-NarudzbaId="@Model.NarudzbaId" class="btn btn-info" ajax-poziv="da" ajax-rezultat="nekiId">Uredi</a>
+                                            <a asp-action="Obrisi" asp-route-VoziloId="@x.VoziloId" asp-route-NarudzbaId="@Model.NarudzbaId" class="btn btn-danger" ajax-poziv="da" ajax-rezultat="nekiId">Obriši</a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @if (Model.StatusNarudzbeId == 4)
+        {
+            <br />
+            <a asp-action="Dodaj" asp-route-id="@Model.NarudzbaId" class="btn btn-primary" ajax-poziv="da" ajax-rezultat="nekiId">Dodaj</a>
+        }
+    </div>
+</div>

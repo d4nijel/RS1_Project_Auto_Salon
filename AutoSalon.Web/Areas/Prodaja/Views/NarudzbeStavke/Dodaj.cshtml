@@ -1,0 +1,47 @@
+﻿@model NarudzbeStavkeDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+<form asp-action="Snimi" ajax-poziv="da" ajax-rezultat="nekiId">
+    <input asp-for="NarudzbaId" type="hidden" />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Dodavanje stavki narudžbe</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Vozilo: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <select asp-for="VoziloId" asp-items="@Model.Vozila" class="form-control"></select>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Količina: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Kolicina" class="form-control" />
+                        <span asp-validation-for="Kolicina" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <p style="color:red; display:inline">*Obavezno polje</p>
+            <div style="float:right;">
+                <a asp-action="Nazad" asp-controller="Narudzbe" asp-route-id="@Model.NarudzbaId" style="float:left; margin-right:10px" class="btn btn-info">Nazad</a>
+                <button id="btnDodaj" type="submit" style="float:right;" class="btn btn-primary">Dodaj</button>
+            </div>
+        </div>
+    </div>
+</form>

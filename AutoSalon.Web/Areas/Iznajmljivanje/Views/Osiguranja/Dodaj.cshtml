@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/nav_Layout.cshtml";
+}
+
+@model AutoSalon.Web.Areas.Iznajmljivanje.ViewModels.OsiguranjaDodajVM
+
+<h3>Dodavanje/izmjena podataka </h3>
+
+
+<form asp-controller="Osiguranja" asp-action="Snimi">
+
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="brojPolice">*Broj police: </label>
+                <input asp-for="BrojPolice" type="text" class="form-control" id="brojPolice" />
+                <span asp-validation-for="BrojPolice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="osiguravajucaFirma">*Osiguravajuća firma: </label>
+                <select asp-for="OsiguravajucaFirmaID" asp-items="@Model.osiguravajuceFirme" class="form-control" id="osiguravajucaFirma">
+                    <option>Odaberi osiguravajuću firmu</option>
+                </select>
+                <span asp-validation-for="OsiguravajucaFirmaID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="krajUgovora">*Kraj ugovora: </label>
+                <input type="date" asp-for="KrajUgovora" class="form-control" id="krajUgovora" />
+                <span asp-validation-for="KrajUgovora" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="vozilo">*Vozilo: </label>
+                <select asp-for="VoziloID" asp-items="@Model.vozila" class="form-control" id="vozilo">
+                    <option>Odaberi vozilo</option>
+                </select>
+                <span asp-validation-for="VoziloID" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <button type="submit" style="float:right; width:20%" class="btn btn-primary">Potvrdi</button>
+
+</form>
+
+

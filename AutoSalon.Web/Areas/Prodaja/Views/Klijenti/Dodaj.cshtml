@@ -1,0 +1,110 @@
+﻿@model KlijentiDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+<form asp-action="Snimi">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Dodavanje novog klijenta</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Ime: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Ime" class="form-control" />
+                        <span asp-validation-for="Ime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Spol: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <select asp-for="Spol" class="form-control">
+                            <option value="M">Muško</option>
+                            <option value="Z">Žensko</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Adresa: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Adresa" class="form-control" />
+                        <span asp-validation-for="Adresa" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Prezime: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Prezime" class="form-control" />
+                        <span asp-validation-for="Prezime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Email: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Grad: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <select asp-for="GradId" asp-items="@Model.Gradovi" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>JMBG: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="JMBG" class="form-control" />
+                        <span asp-validation-for="JMBG" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Telefon: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Telefon" class="form-control" />
+                        <span asp-validation-for="Telefon" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Poštanski broj: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="PostanskiBroj" class="form-control" />
+                        <span asp-validation-for="PostanskiBroj" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Datum rođenja: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input type="date" asp-for="DatumRodjenja" class="form-control" />
+                        <span asp-validation-for="DatumRodjenja" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <p style="color:red; display:inline">*Obavezno polje</p>
+            <button type="submit" style="float:right; width:20%" class="btn btn-primary">Dodaj</button>
+        </div>
+    </div>
+</form>

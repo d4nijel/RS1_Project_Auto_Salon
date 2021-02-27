@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/nav_Layout.cshtml";
+}
+
+@model AutoSalon.Web.Areas.Iznajmljivanje.ViewModels.VozilaDodajVM
+
+<h3>Dodavanje/izmjena podataka</h3>
+
+
+<form asp-action="Snimi" asp-controller="Vozila">
+
+
+    <input type="hidden" asp-for="VoziloID" class="form-control" id="voziloId" />
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="proizvodjac">*Proizvođač: </label>
+                <select asp-for="ProizvodjacID" asp-items="@Model.proizvodjaci" class="form-control" id="proizvodjac">
+                    <option>Odaberite proizvođača</option>
+                </select>
+                <span asp-validation-for="ProizvodjacID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="brojVrata">Broj vrata: </label>
+                <input type="text" asp-for="BrojVrata" class="form-control" id="brojVrata" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="motor">Motor: </label>
+                <select asp-for="MotorID" asp-items="@Model.motori" class="form-control" id="motor">
+                    <option>Odaberite motor</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="model">*Model: </label>
+                <input type="text" asp-for="Model" class="form-control" id="model" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="pogon">Pogon: </label>
+                <select type="text" asp-for="Pogon" class="form-control" id="pogon">
+                    <option value="Front">Prednji</option>
+                    <option value="Back">Zadnji</option>
+                    <option value="4x4">4x4</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="tip">Tip: </label>
+                <select type="text" asp-for="TipVozila" class="form-control" id="tip">
+                    <option value="Sedan">Sedan</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Ultracompact">Ultracompact</option>
+                    <option value="Coupe">Coupe</option>
+                    <option value="Minivan">Minivan</option>
+                    <option value="Van">Van</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="mjenjac">Mjenjač: </label>
+                <select type="text" asp-for="Mjenjac" class="form-control" id="mjenjac">
+                    <option value="Manual">Manuelni</option>
+                    <option value="Semiautomatic">Poluautomatski</option>
+                    <option value="Automatic">Automatski</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="boja">Boja: </label>
+                <input type="text" asp-for="Boja" class="form-control" id="boja" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="godinaProizvodnje">*Godina proizvodnje: </label>
+                <input type="number" asp-for="Godinaproizvodnje" class="form-control" id="godinaProizvodnje" />
+                <span asp-validation-for="Godinaproizvodnje" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="cijena">*Cijena: </label>
+                <input type="text" asp-for="Cijena" class="form-control" id="cijena" />
+                <span asp-validation-for="Cijena" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="garancija">Garancija: </label>
+                <input type="number" asp-for="Garancija" class="form-control" id="garancija" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <label for="oprema">Oprema: </label>
+            <textarea asp-for="Oprema" style="resize:none" rows="3" class="form-control" id="oprema"></textarea>
+        </div>
+    </div>
+    <br />
+    <button type="submit" style="float:right; width:20%" class="btn btn-primary">Potvrdi</button>
+
+
+
+
+</form>

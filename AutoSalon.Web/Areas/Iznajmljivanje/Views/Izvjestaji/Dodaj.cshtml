@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/nav_Layout.cshtml";
+}
+
+@model AutoSalon.Web.Areas.Iznajmljivanje.ViewModels.IzvjestajiDodajVM
+
+<h3>Dodavanje/izmjena podataka</h3>
+
+<form asp-controller="Izvjestaji" asp-action="Snimi">
+
+    <input asp-for="ZaposlenikId" type="hidden" />
+
+    <input type="hidden" asp-for="IzvjestajID" />
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="naziv">*Naziv: </label>
+                <input type="text" asp-for="Naziv" class="form-control" id="naziv" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="napomena">Napomena: </label>
+                <textarea asp-for="Napomena" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="sadrzaj">*Sadržaj: </label>
+                <textarea asp-for="Sadrzaj" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Sadrzaj" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <button type="submit" style="float:right; width:20%" class="btn btn-primary">Potvrdi</button>
+
+</form>

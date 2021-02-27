@@ -1,0 +1,111 @@
+﻿@model FaktureDetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+<form asp-action="UrediSnimi">
+    <input asp-for="DatumFakture" hidden />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Detalji o fakturama / izmjena podataka</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Broj fakture: </label>
+                        <input asp-for="FakturaId" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Datum izdavanja fakture: </label>
+                        <input asp-for="Datum" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Broj narudžbe: </label>
+                        <input asp-for="NarudzbaId" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Zaposlenik: </label>
+                        <input asp-for="ZaposlenikImePrezime" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Popust: </label>
+                        @if (Model.StatusFaktureId == 3) // Ako je status fakture Početna
+                        {
+                            <select asp-for="PopustId" asp-items="@Model.Popusti" class="form-control">
+                                <option>Odaberite popust</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <input asp-for="Popust" class="form-control" readonly />
+                        }
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Ime i prezime klijenta: </label>
+                        <input asp-for="KlijentImePrezime" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Ukupan iznos: </label>
+                        <input type="text" value="@Model.UkupnaCijena.ToString("F2")" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Ukupan iznos sa PDV: </label>
+                        <input type="text" value="@Model.UkupnaCijenaSaPDV.ToString("F2")" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <input asp-for="Status" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div style="float:right;">
+
+                <a asp-action="NazadIndex" style="float:left; margin-right:10px" class="btn btn-default">Nazad</a>
+                @if (Model.DostavaId == null && Model.StatusFaktureId == 3)
+                {
+                    <a asp-action="Dodaj" asp-controller="Dostave" asp-route-id="@Model.FakturaId" ajax-poziv="da" ajax-rezultat="FaktureDetaljiNekiId" style="margin-right:10px" class="btn btn-info">Detalji o dostavi</a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="Dostave" asp-route-id="@Model.FakturaId" ajax-poziv="da" ajax-rezultat="FaktureDetaljiNekiId" style="margin-right:10px" class="btn btn-info">Detalji o dostavi</a>
+                }
+                @if (Model.StatusFaktureId == 2)
+                {
+                    <a asp-action="Dodaj" asp-controller="Uplate" asp-route-FakturaId="@Model.FakturaId" ajax-poziv="da" ajax-rezultat="FaktureDetaljiNekiId" style="margin-right:10px" class="btn btn-info">Detalji o uplati</a>
+                }
+                else if (Model.StatusFaktureId == 1)
+                {
+                    <a asp-action="Index" asp-controller="Uplate" asp-route-id="@Model.FakturaId" ajax-poziv="da" ajax-rezultat="FaktureDetaljiNekiId" style="margin-right:10px" class="btn btn-info">Detalji o uplati</a>
+                }
+                @if (Model.StatusFaktureId == 3)
+                {
+                    <a asp-action="Kreiraj" asp-route-id="@Model.FakturaId" style="margin-right:10px" class="btn btn-warning">Kreiraj fakturu</a>
+                    <button type="submit" style="float:right;" class="btn btn-primary">Izmijeni</button>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+<div id="FaktureDetaljiNekiId"></div>

@@ -1,0 +1,45 @@
+﻿@model NarudzbeIndexVM
+@{
+    ViewData["Title"] = "Narudžbe";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>Pregled završenih / otkazanih narudžbi</b>
+    </div>
+    <div class="panel-body">
+        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <br />
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline collapsed" id="dataTables-example" role="grid" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Broj narudžbe</th>
+                                <th>Datum narudžbe</th>
+                                <th>Status narudžbe</th>
+                                <th>Broj fakture</th>
+                                <th>Status fakture</th>
+                                <th>Cijena (KM)</th>
+                                <th>Cijena sa PDV (KM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.Redovi)
+                            {
+                                <tr>
+                                    <td>@x.BrojNarudzbe</td>
+                                    <td>@x.DatumNarudzbe.ToShortDateString()</td>
+                                    <td>@x.StatusNarudzbe</td>
+                                    <td>@x.FakturaId</td>
+                                    <td>@x.StatusFakture</td>
+                                    <td>@x.Cijena.ToString("F2")</td>
+                                    <td>@x.CijenaSaPDV.ToString("F2")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

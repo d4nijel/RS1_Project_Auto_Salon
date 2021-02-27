@@ -1,0 +1,41 @@
+﻿@model UplateIndexVM
+@{
+    ViewData["Title"] = "Uplata";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>Pregled uplata</b>
+    </div>
+    <div class="panel-body">
+        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <br />
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline collapsed" id="dataTables-example" role="grid" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Broj fakture</th>
+                                <th>Datum uplate</th>
+                                <th>Iznos</th>
+                                <th>Ime i prezime klijenta</th>
+                                <th>Način plaćanja</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.Redovi)
+                            {
+                            <tr>
+                                <td>@x.FakturaId</td>
+                                <td>@x.DatumUplate.ToShortDateString()</td>
+                                <td>@x.Iznos.ToString("F2")</td>
+                                <td>@x.KlijentImePrezime</td>
+                                <td>@x.NacinPlacanja</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@model UplateDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+<form asp-action="Snimi">
+    <input asp-for="@Model.Iznos" hidden />
+    <input asp-for="DatumUplate" hidden />
+    <input asp-for="KlijentId" hidden />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Dodavanje uplate</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Broj fakture: </label>
+                        <input asp-for="FakturaId" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Datum uplate: </label>
+                        <input asp-for="Datum" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Iznos sa PDV (KM): </label>
+                        <input asp-for="@Model.IznosSaPDV" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Klijent: </label>
+                        <input asp-for="KlijentImePrezime" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Način plaćanja: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <select asp-for="NacinPlacanjaId" asp-items="@Model.NaciniPlacanja" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <p style="color:red; display:inline">*Obavezno polje</p>
+            <button type="submit" style="float:right; width:20%" class="btn btn-primary">Dodaj</button>
+        </div>
+    </div>
+</form>

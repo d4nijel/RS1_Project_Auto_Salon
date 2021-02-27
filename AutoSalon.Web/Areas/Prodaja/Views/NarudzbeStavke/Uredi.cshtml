@@ -1,0 +1,56 @@
+﻿@model NarudzbeStavkeUrediVM
+@{
+    ViewData["Title"] = "Uredi";
+}
+<form asp-action="SnimiUredi" ajax-poziv="da" ajax-rezultat="nekiId">
+    <input asp-for="NarudzbaId" type="hidden" />
+    <input asp-for="VoziloId" type="hidden" />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Uredi stavku narudžbe</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Vozilo: </label>
+                        <input asp-for="Vozilo" class="form-control" readonly />
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Cijena (KM): </label>
+                        <input asp-for="Cijena" class="form-control" readonly value="@Model.Cijena.ToString("F2")"/>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Količina: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Kolicina" class="form-control" />
+                        <span asp-validation-for="Kolicina" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <p style="color:red; display:inline">*Obavezno polje</p>
+            <button type="submit" style="float:right; width:20%" class="btn btn-primary">Uredi</button>
+        </div>
+    </div>
+</form>

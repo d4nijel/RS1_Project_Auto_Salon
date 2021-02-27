@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Uredi";
+    Layout = "~/Views/Shared/nav_Layout.cshtml";
+}
+
+<h3>Uredi novu Rent-a-car stavku</h3>
+
+@model AutoSalon.Web.Areas.Iznajmljivanje.ViewModels.RentacarUrediVM
+
+
+@if (Model.isZavrsen)
+{
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="klijent">*Klijent: </label>
+                <input type="text" disabled value="@Model.klijent" class="form-control" id="klijent" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="datumIsteka">*Datum isteka: </label>
+                <input asp-for="DatumIsteka" disabled type="datetime-local" class="form-control" id="datumIsteka" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="popust">Popust: </label>
+                <input disabled asp-for="popust" class="form-control" id="popust" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <label for="vozilo">*Vozilo: </label>
+                <input value="@Model.vozilo" disabled class="form-control" id="vozilo" />
+            </div>
+        </div>
+    </div>
+
+
+    <a class="btn btn-primary" href="/Iznajmljivanje/Rentacar" style="width:20%; float:right">Nazad</a>
+
+
+}
+else
+{
+
+    <form asp-controller="Rentacar" asp-action="UrediSnimi">
+
+        <input asp-for="RentBookingID" type="hidden" />
+
+        <div class="row show-grid">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                    <label for="klijent">*Klijent: </label>
+                    <input type="text" readonly asp-for="klijent" class="form-control" id="klijent" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                    <label for="datumIsteka">*Datum isteka: </label>
+                    <input asp-for="DatumIsteka" type="datetime-local" class="form-control" id="datumIsteka" />
+                    <span asp-validation-for="DatumIsteka" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                    <label for="popust">Popust: </label>
+                    <input readonly asp-for="popust" class="form-control" id="popust" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                    <label for="vozilo">*Vozilo: </label>
+                    <input asp-for="vozilo" readonly class="form-control" id="vozilo" />
+                </div>
+            </div>
+        </div>
+
+
+        <button type="submit" style="float:right; width:20%" class="btn btn-primary">Potvrdi</button>
+
+    </form>
+
+   
+}
+
+
+

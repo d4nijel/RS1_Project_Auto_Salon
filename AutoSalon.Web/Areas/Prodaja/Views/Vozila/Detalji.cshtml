@@ -1,0 +1,114 @@
+﻿@model VozilaDodajVM
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+
+<form asp-action="Snimi">
+    <input asp-for="VoziloId" hidden>
+    <input asp-for="MotorId" hidden>
+    <input asp-for="ProizvodjacId" hidden>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Detalji o vozilu / izmjena podataka</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Proizvođač: </label>
+                        <input asp-for="Proizvodjac" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Mjenjač: </label>
+                        <input asp-for="Mjenjac" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Boja: </label>
+                        <input asp-for="Boja" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Model vozila: </label>
+                        <input asp-for="Model" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Pogon: </label>
+                        <input asp-for="Pogon" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Broj vrata: </label>
+                        <input asp-for="BrojVrata" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Godina proizvodnje: </label>
+                        <input asp-for="GodinaProizvodnje" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Tip vozila: </label>
+                        <input asp-for="TipVozila" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Garancija (godina): </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Garancija" class="form-control" />
+                        <span asp-validation-for="Garancija" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Motor: </label>
+                        <input asp-for="Motor" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Oprema: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <select asp-for="Oprema" class="form-control">
+                            <option value="Active">Active</option>
+                            <option value="Ambition">Ambition</option>
+                            <option value="Style">Style</option>
+                            <option value="Sport">Sport</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Cijena: </label>
+                        <p style="color:red; display:inline">*</p>
+                        <input asp-for="Cijena" class="form-control" />
+                        <span asp-validation-for="Cijena" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <p style="color:red; display:inline">*Obavezno polje</p>
+            <div style="float:right;">
+                <a asp-action="NazadIndex" style="float:left; margin-right:10px" class="btn btn-info">Nazad</a>
+                <button type="submit" style="float:right" class="btn btn-primary">Izmijeni</button>
+            </div>
+        </div>
+    </div>
+</form>

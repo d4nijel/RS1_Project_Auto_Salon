@@ -1,0 +1,78 @@
+﻿@model IzvjestajiDodajVM
+@{
+    ViewData["Title"] = "Detalji";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#PrintDivIzvjestaji").click(function () {
+                window.print();
+            });
+        });
+    </script>
+}
+<form asp-action="Snimi">
+    <input asp-for="ZaposlenikId" hidden />
+    <input asp-for="DatumKreiranja" hidden />
+    <input asp-for="IzvjestajId" hidden />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b>Detalji o izvještaju / izmjena podataka</b>
+        </div>
+        <div class="panel-body">
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Datum kreiranja: </label>
+                        <input asp-for="Datum" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Naziv: </label>
+                        <input asp-for="Naziv" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Sadržaj: </label>
+                        <textarea asp-for="Sadrzaj" class="form-control" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label>Napomena: </label>
+                        <input asp-for="Napomena" class="form-control" />
+                        <span asp-validation-for="Napomena" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                </div>
+            </div>
+            <br />
+            <div id="button-container" class="hidden-print" style="float:right">
+                <a href="#" id="PrintDivIzvjestaji" class="btn btn-success btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>Print</a>
+                <button type="submit" class="btn btn-primary">Izmijeni</button>
+            </div>
+        </div>
+    </div>
+</form>

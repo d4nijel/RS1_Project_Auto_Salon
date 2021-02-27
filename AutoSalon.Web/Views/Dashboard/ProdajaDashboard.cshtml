@@ -1,0 +1,145 @@
+﻿@model AutoSalon.Web.ViewModels.DashboardVM
+@{
+    ViewData["Title"] = "Prodaja";
+    Layout = "~/Views/Shared/_Layout_Prodaja.cshtml";
+}
+<div class="row">
+    <!------------------------------------------------------->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-users fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.BrojKlijenata</div>
+                        <div>Broj klijenata</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Prodaja/Klijenti">
+                <div class="panel-footer">
+                    <span class="pull-left">Pregled klijenata</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!------------------------------------------------------->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-car fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.BrojVozila</div>
+                        <div>Broj vozila</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Prodaja/Vozila">
+                <div class="panel-footer">
+                    <span class="pull-left">Pregled vozila</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!------------------------------------------------------->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-first-order fa-5x" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.BrojNarudzbi</div>
+                        <div>Broj narudžbi</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Prodaja/Narudzbe">
+                <div class="panel-footer">
+                    <span class="pull-left">Pregled narudžbi</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!------------------------------------------------------->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-file-text-o fa-5x" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.BrojFaktura</div>
+                        <div>Broj faktura</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Prodaja/Fakture">
+                <div class="panel-footer">
+                    <span class="pull-left">Pregled faktura</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!------------------------------------------------------->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-credit-card-alt fa-5x" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.BrojUplata</div>
+                        <div>Broj uplata</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Prodaja/Uplate">
+                <div class="panel-footer">
+                    <span class="pull-left">Pregled uplata</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!------------------------------------------------------->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-file fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.BrojIzvjestaja</div>
+                        <div>Broj izvještaja</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Prodaja/Izvjestaji">
+                <div class="panel-footer">
+                    <span class="pull-left">Pregled izvještaja</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

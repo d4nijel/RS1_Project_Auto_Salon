@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/nav_Layout.cshtml";
+}
+
+@model AutoSalon.Web.Areas.Iznajmljivanje.ViewModels.KlijentDodajVM
+
+<h3>Informacije o klijentu</h3>
+<hr />
+<h4>Dodavanje/izmjena podataka</h4>
+
+<form asp-action="Snimi" asp-controller="Klijenti">
+
+    <input asp-for="KlijentID" type="hidden" class="form-control" id="id" />
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="ime">*Ime: </label>
+                <input asp-for="Ime" type="text" class="form-control" id="ime" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="grad">Grad: </label>
+                <select asp-for="GradID" asp-items="@Model.gradovi" id="grad" class="form-control">
+                    <option>Odaberite grad</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="email">E-mail: </label>
+                <input asp-for="Email" formnovalidate type="email" class="form-control" id="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="prezime">*Prezime: </label>
+                <input asp-for="Prezime" type="text" class="form-control" id="prezime" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="adresa">Adresa: </label>
+                <input asp-for="Adresa" type="text" class="form-control" id="adresa" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="telefon">Telefon: </label>
+                <input asp-for="Telefon" type="text" class="form-control" id="telefon" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="jmbg">*JMBG: </label>
+                <input asp-for="JMBG" type="text" class="form-control" id="jmbg" />
+                <span asp-validation-for="JMBG" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="datumrodjenja">*Datum rođenja: </label>
+                <input asp-for="DatumRodjenja" type="date" class="form-control" id="datumrodjenja" />
+                <span asp-validation-for="DatumRodjenja" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+
+        </div>
+    </div>
+
+
+    <div class="row show-grid">
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="spol">Spol: </label>
+                <select asp-for="Spol" class="form-control" id="spol">
+                    <option value="M">Muško</option>
+                    <option value="Z">Žensko</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <div class="form-group">
+                <label for="postanskibroj">Poštanski broj: </label>
+                <input type="text" asp-for="PostanskiBroj" class="form-control" id="postanskibroj" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+
+        </div>
+    </div>
+    <br />
+    <button type="submit" style="float:right; width:20%" class="btn btn-primary">Potvrdi</button>
+
+</form>
+
+
+    @if (Model.KlijentID != 0)
+    {
+
+        <br />
+        <h4>Rentacar stavke klijenta</h4>
+        <hr />
+        <div id="ajaxPoziv"></div>
+    }
+    <script>
+    $(document).ready(function () {
+        $.get("/Iznajmljivanje/Rentacar/PrikazPoKlijentu/" +@Model.KlijentID, function (rezultat) {
+
+            $("#ajaxPoziv").html(rezultat);
+        });
+    });
+    </script>
